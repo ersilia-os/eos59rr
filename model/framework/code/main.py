@@ -2,19 +2,27 @@
 import os
 import csv
 import sys
-from rdkit import Chem
-from rdkit.Chem.Descriptors import MolWt
+import numpy as np
+from scripts.utils import fingerprints_molmap
 
 # parse arguments
 input_file = sys.argv[1]
 output_file = sys.argv[2]
 
-# current file directory
+
 root = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(root, "./bidd-molmap/"))
+
+
+mp = fingerprints_molmap()
+
 
 # my model
 def my_model(smiles_list):
-    return [MolWt(Chem.MolFromSmiles(smi)) for smi in smiles_list]
+    X = mp.batch_transform(smiles_list)
+    X = np.sum(X, axis=3)
+    X = X.reshape(X.shape[0], X.shape[1]*X.shape[2])
+    return X
 
 
 # read SMILES from .csv file, assuming one column with header
@@ -34,6 +42,6 @@ assert input_len == output_len
 # write output in a .csv file
 with open(output_file, "w") as f:
     writer = csv.writer(f)
-    writer.writerow(["value"])  # header
+    writer.writerow(["fingerprints"])  # header
     for o in outputs:
-        writer.writerow([o])
+        writer.writerow(o)
