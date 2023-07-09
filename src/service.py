@@ -73,7 +73,7 @@ class Model(object):
             h = next(reader)
             R = []
             for r in reader:
-                R += [{"molmap": r }] # <-- EDIT: Modify according to type of output (Float, String...)
+                R += [{"molmap": [Float(x) for x in r ]}] # <-- EDIT: Modify according to type of output (Float, String...)
         meta = {"outcome": h}
         result = {"result": R, "meta": meta}
         shutil.rmtree(tmp_folder)
