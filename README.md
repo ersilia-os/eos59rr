@@ -25,6 +25,8 @@ Molecular representation of small molecules via ingerprint-based molecular maps 
 
 ## Ersilia model URLs
 * [GitHub](https://github.com/ersilia-os/eos59rr)
+* [AWS S3](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos59rr.zip)
+* [DockerHub](https://hub.docker.com/r/ersiliaos/eos59rr) (AMD64)
 
 ## Citation
 

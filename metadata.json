@@ -27,5 +27,10 @@
     "Publication": "https://www.nature.com/articles/s42256-021-00301-6",
     "Source Code": "https://github.com/shenwanxiang/bidd-molmap",
     "License": "GPL-3.0",
-    "Contributor": "samuelmaina"
+    "Contributor": "samuelmaina",
+    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos59rr.zip",
+    "DockerHub": "https://hub.docker.com/r/ersiliaos/eos59rr",
+    "Docker Architecture": [
+        "AMD64"
+    ]
 }
