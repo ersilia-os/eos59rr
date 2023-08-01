@@ -11,7 +11,7 @@ Molecular representation of small molecules via ingerprint-based molecular maps 
 
 * Input: `Compound`
 * Input Shape: `Single`
-* Task: `Generative`
+* Task: `Representation`
 * Output: `Image, Descriptor`
 * Output Type: `Float`
 * Output Shape: `Matrix`
