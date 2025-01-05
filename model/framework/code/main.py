@@ -39,9 +39,14 @@ input_len = len(smiles_list)
 output_len = len(outputs)
 assert input_len == output_len
 
+header = []
+for i in range(37):
+    for j in range(36):
+        header += ["row_{0}_col_{1}".format(str(i).zfill(2), str(j).zfill(2))]
+
 # write output in a .csv file
 with open(output_file, "w") as f:
     writer = csv.writer(f)
-    writer.writerow(["fingerprints"])  # header
+    writer.writerow(header)  # header
     for o in outputs:
         writer.writerow(o)
