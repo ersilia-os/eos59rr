@@ -1,36 +1,46 @@
 {
     "Identifier": "eos59rr",
-    "Slug": "bidd-molmap-fps",
+    "Slug": "bidd-molmap-fingerprint",
     "Status": "Ready",
     "Title": "Molecular fingerprint maps based on broadly learned knowledge-based representations",
-    "Description": "Molecular representation of small molecules via ingerprint-based molecular maps (images). Typically, the goal is to use these images as inputs for an image-based deep learning model such as a convolutional neural network. The authors have demonstrated high performance of MolMap out-of-the-box with a broad range of tasks from MoleculeNet.",
-    "Mode": "Pretrained",
+    "Description": "Molecular representation of small molecules via ingerprint-based molecular maps (images). Typically, the goal is to use these images as inputs for an image-based deep learning model such as a convolutional neural network. The authors have demonstrated high performance of MolMap out-of-the-box with a broad range of tasks from MoleculeNet.\n",
+    "Source": "Local",
+    "Source Type": "External",
     "Input": [
         "Compound"
     ],
-    "Input Shape": "Single",
-    "Task": [
-        "Representation"
+    "Input Dimension": 1,
+    "Task": "Representation",
+    "Subtask": "Featurization",
+    "Biomedical Area": [
+        "Any"
+    ],
+    "Target Organism": [
+        "Not Applicable"
     ],
     "Output": [
         "Image",
         "Descriptor"
     ],
-    "Output Type": [
-        "Float"
-    ],
-    "Output Shape": "Matrix",
-    "Interpretation": "Image representation of a molecule. Each pixel represents a molecular feature",
+    "Output Dimension": 1332,
+    "Output Consistency": "Fixed",
+    "Interpretation": "Image representation of a molecule. Each pixel represents a molecular feature (37 rows, 36 columns, flattened with reshape)",
     "Tag": [
         "Fingerprint"
     ],
     "Publication": "https://www.nature.com/articles/s42256-021-00301-6",
+    "Publication Type": "Peer reviewed",
+    "Publication Year": 2021,
     "Source Code": "https://github.com/shenwanxiang/bidd-molmap",
-    "License": "GPL-3.0",
+    "License": "GPL-3.0-or-later",
     "Contributor": "samuelmaina",
-    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos59rr.zip",
+    "Incorporation Date": "2023-07-03",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos59rr",
     "Docker Architecture": [
         "AMD64"
+    ],
+    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos59rr.zip",
+    "Deployment": [
+        "Local"
     ]
 }
