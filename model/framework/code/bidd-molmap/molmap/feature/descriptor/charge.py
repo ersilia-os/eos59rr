@@ -17,10 +17,11 @@ import numpy
 
 
 ##############################################################################
-iter_step = 12
+iter_step=12
 
 
-def _CalculateElementMaxPCharge(mol, AtomicNum=6):
+                    
+def _CalculateElementMaxPCharge(mol,AtomicNum=6):
     """
     #################################################################
     **Internal used only**
@@ -28,20 +29,19 @@ def _CalculateElementMaxPCharge(mol, AtomicNum=6):
     Most positive charge on atom with atomic number equal to n
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        if atom.GetAtomicNum() == AtomicNum:
-            res.append(float(atom.GetProp("_GasteigerCharge")))
-
-    if res == []:
+        if atom.GetAtomicNum()==AtomicNum:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+            
+    if res==[]:
         return 0
     else:
         return max(res)
 
-
-def _CalculateElementMaxNCharge(mol, AtomicNum=6):
+def _CalculateElementMaxNCharge(mol,AtomicNum=6):
     """
     #################################################################
     **Internal used only**
@@ -49,13 +49,13 @@ def _CalculateElementMaxNCharge(mol, AtomicNum=6):
     Most negative charge on atom with atomic number equal to n
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        if atom.GetAtomicNum() == AtomicNum:
-            res.append(float(atom.GetProp("_GasteigerCharge")))
-    if res == []:
+        if atom.GetAtomicNum()==AtomicNum:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+    if res==[]:
         return 0
     else:
         return min(res)
@@ -77,7 +77,7 @@ def CalculateHMaxPCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementMaxPCharge(mol, AtomicNum=1)
+    return _CalculateElementMaxPCharge(mol,AtomicNum=1)
 
 
 def CalculateCMaxPCharge(mol):
@@ -96,7 +96,7 @@ def CalculateCMaxPCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementMaxPCharge(mol, AtomicNum=6)
+    return _CalculateElementMaxPCharge(mol,AtomicNum=6)
 
 
 def CalculateNMaxPCharge(mol):
@@ -115,7 +115,7 @@ def CalculateNMaxPCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementMaxPCharge(mol, AtomicNum=7)
+    return _CalculateElementMaxPCharge(mol,AtomicNum=7)
 
 
 def CalculateOMaxPCharge(mol):
@@ -134,8 +134,7 @@ def CalculateOMaxPCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementMaxPCharge(mol, AtomicNum=8)
-
+    return _CalculateElementMaxPCharge(mol,AtomicNum=8)
 
 def CalculateHMaxNCharge(mol):
     """
@@ -153,7 +152,7 @@ def CalculateHMaxNCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementMaxNCharge(mol, AtomicNum=1)
+    return _CalculateElementMaxNCharge(mol,AtomicNum=1)
 
 
 def CalculateCMaxNCharge(mol):
@@ -172,7 +171,7 @@ def CalculateCMaxNCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementMaxNCharge(mol, AtomicNum=6)
+    return _CalculateElementMaxNCharge(mol,AtomicNum=6)
 
 
 def CalculateNMaxNCharge(mol):
@@ -191,7 +190,7 @@ def CalculateNMaxNCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementMaxNCharge(mol, AtomicNum=7)
+    return _CalculateElementMaxNCharge(mol,AtomicNum=7)
 
 
 def CalculateOMaxNCharge(mol):
@@ -210,8 +209,7 @@ def CalculateOMaxNCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementMaxNCharge(mol, AtomicNum=8)
-
+    return _CalculateElementMaxNCharge(mol,AtomicNum=8)
 
 def CalculateAllMaxPCharge(mol):
     """
@@ -229,12 +227,12 @@ def CalculateAllMaxPCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+    if res==[]:
         return 0
     else:
         return max(res)
@@ -256,18 +254,18 @@ def CalculateAllMaxNCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+    if res==[]:
         return 0
     else:
         return min(res)
 
 
-def _CalculateElementSumSquareCharge(mol, AtomicNum=6):
+def _CalculateElementSumSquareCharge(mol,AtomicNum=6):
     """
     #################################################################
     **Internal used only**
@@ -275,20 +273,20 @@ def _CalculateElementSumSquareCharge(mol, AtomicNum=6):
     Ths sum of square Charges on all atoms with atomicnumber equal to n
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        if atom.GetAtomicNum() == AtomicNum:
-            res.append(float(atom.GetProp("_GasteigerCharge")))
-    if res == []:
+        if atom.GetAtomicNum()==AtomicNum:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+    if res==[]:
         return 0
     else:
         return sum(numpy.square(res))
 
 
 def CalculateHSumSquareCharge(mol):
-
+    
     """
     #################################################################
     The sum of square charges on all H atoms
@@ -304,7 +302,7 @@ def CalculateHSumSquareCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementSumSquareCharge(mol, AtomicNum=1)
+    return _CalculateElementSumSquareCharge(mol,AtomicNum=1)
 
 
 def CalculateCSumSquareCharge(mol):
@@ -323,7 +321,7 @@ def CalculateCSumSquareCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementSumSquareCharge(mol, AtomicNum=6)
+    return _CalculateElementSumSquareCharge(mol,AtomicNum=6)
 
 
 def CalculateNSumSquareCharge(mol):
@@ -342,8 +340,7 @@ def CalculateNSumSquareCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementSumSquareCharge(mol, AtomicNum=7)
-
+    return _CalculateElementSumSquareCharge(mol,AtomicNum=7)
 
 def CalculateOSumSquareCharge(mol):
     """
@@ -361,8 +358,7 @@ def CalculateOSumSquareCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    return _CalculateElementSumSquareCharge(mol, AtomicNum=8)
-
+    return _CalculateElementSumSquareCharge(mol,AtomicNum=8)
 
 def CalculateAllSumSquareCharge(mol):
     """
@@ -380,17 +376,16 @@ def CalculateAllSumSquareCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+            
+    if res==[]:
         return 0
     else:
         return sum(numpy.square(res))
-
 
 def CalculateTotalPCharge(mol):
     """
@@ -408,18 +403,17 @@ def CalculateTotalPCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+            
+    if res==[]:
         return 0
     else:
-        cc = numpy.array(res, "d")
-        return sum(cc[cc > 0])
-
+        cc=numpy.array(res,'d')
+        return sum(cc[cc>0])
 
 def CalculateMeanPCharge(mol):
     """
@@ -437,17 +431,17 @@ def CalculateMeanPCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+            
+    if res==[]:
         return 0
     else:
-        cc = numpy.array(res, "d")
-        return numpy.mean(cc[cc > 0])
+        cc=numpy.array(res,'d')
+        return numpy.mean(cc[cc>0])
 
 
 def CalculateTotalNCharge(mol):
@@ -466,17 +460,17 @@ def CalculateTotalNCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+            
+    if res==[]:
         return 0
     else:
-        cc = numpy.array(res, "d")
-        return sum(cc[cc < 0])
+        cc=numpy.array(res,'d')
+        return sum(cc[cc<0])
 
 
 def CalculateMeanNCharge(mol):
@@ -495,17 +489,17 @@ def CalculateMeanNCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+            
+    if res==[]:
         return 0
     else:
-        cc = numpy.array(res, "d")
-        return numpy.mean(cc[cc < 0])
+        cc=numpy.array(res,'d')
+        return numpy.mean(cc[cc<0])
 
 
 def CalculateTotalAbsoulteCharge(mol):
@@ -524,18 +518,17 @@ def CalculateTotalAbsoulteCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+            
+    if res==[]:
         return 0
     else:
-        cc = numpy.array(res, "d")
+        cc=numpy.array(res,'d')
         return sum(numpy.absolute(cc))
-
 
 def CalculateMeanAbsoulteCharge(mol):
     """
@@ -553,18 +546,17 @@ def CalculateMeanAbsoulteCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+            
+    if res==[]:
         return 0
     else:
-        cc = numpy.array(res, "d")
+        cc=numpy.array(res,'d')
         return numpy.mean(numpy.absolute(cc))
-
 
 def CalculateRelativePCharge(mol):
     """
@@ -584,24 +576,23 @@ def CalculateRelativePCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+            
+    if res==[]:
         return 0
     else:
-        cc = numpy.array(res, "d")
-        if sum(cc[cc > 0]) == 0:
+        cc=numpy.array(res,'d')
+        if sum(cc[cc>0])==0:
             return 0
         else:
-            return max(res) / sum(cc[cc > 0])
-
+            return max(res)/sum(cc[cc>0])
 
 def CalculateRelativeNCharge(mol):
-
+    
     """
     #################################################################
     The partial charge of the most negative atom divided
@@ -619,21 +610,20 @@ def CalculateRelativeNCharge(mol):
         Output: result is a numeric value.
     #################################################################
     """
-    Hmol = Chem.AddHs(mol)
-    GMCharge.ComputeGasteigerCharges(Hmol, iter_step)
-    res = []
+    Hmol=Chem.AddHs(mol)
+    GMCharge.ComputeGasteigerCharges(Hmol,iter_step)
+    res=[]
     for atom in Hmol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-
-    if res == []:
+            res.append(float(atom.GetProp('_GasteigerCharge')))
+            
+    if res==[]:
         return 0
     else:
-        cc = numpy.array(res, "d")
-        if sum(cc[cc < 0]) == 0:
+        cc=numpy.array(res,'d')
+        if sum(cc[cc<0])==0:
             return 0
         else:
-            return min(res) / sum(cc[cc < 0])
-
+            return min(res)/sum(cc[cc<0])
 
 def CalculateLocalDipoleIndex(mol):
     """
@@ -652,21 +642,17 @@ def CalculateLocalDipoleIndex(mol):
     #################################################################
     """
 
-    GMCharge.ComputeGasteigerCharges(mol, iter_step)
-    res = []
+    GMCharge.ComputeGasteigerCharges(mol,iter_step)
+    res=[]
     for atom in mol.GetAtoms():
-        res.append(float(atom.GetProp("_GasteigerCharge")))
-    cc = [
-        numpy.absolute(res[x.GetBeginAtom().GetIdx()] - res[x.GetEndAtom().GetIdx()])
-        for x in mol.GetBonds()
-    ]
-    B = len(mol.GetBonds())
-
+        res.append(float(atom.GetProp('_GasteigerCharge')))
+    cc = [numpy.absolute(res[x.GetBeginAtom().GetIdx()]-res[x.GetEndAtom().GetIdx()]) for x in mol.GetBonds()]
+    B=len(mol.GetBonds())
+    
     if B == 0:
         return 0
-    return sum(cc) / B
-
-
+    return sum(cc)/B
+        
 def CalculateSubmolPolarityPara(mol):
     """
     #################################################################
@@ -684,45 +670,54 @@ def CalculateSubmolPolarityPara(mol):
     #################################################################
     """
 
-    return CalculateAllMaxPCharge(mol) - CalculateAllMaxNCharge(mol)
+    return CalculateAllMaxPCharge(mol)-CalculateAllMaxNCharge(mol)
 
 
-_Charge = {
-    "SubmolPolarityPara": CalculateSubmolPolarityPara,
-    "LocalDipoleIndex": CalculateLocalDipoleIndex,
-    "NChargeRelative": CalculateRelativeNCharge,
-    "PChargeRelative": CalculateRelativePCharge,
-    "ChargeMeanAbsoulte": CalculateMeanAbsoulteCharge,
-    "ChargeTotalAbsoulte": CalculateTotalAbsoulteCharge,
-    "NChargeMean": CalculateMeanNCharge,
-    "NChargeTotal": CalculateTotalNCharge,
-    "PChargeMean": CalculateMeanPCharge,
-    "PChargeTotal": CalculateTotalPCharge,
-    ## sum square
-    "SumSquareChargeAll": CalculateAllSumSquareCharge,
-    "SumSquareChargeO": CalculateOSumSquareCharge,
-    "SumSquareChargeN": CalculateNSumSquareCharge,
-    "SumSquareChargeC": CalculateCSumSquareCharge,
-    "SumSquareChargeH": CalculateHSumSquareCharge,
-    # all
-    "NChargeAllMax": CalculateAllMaxNCharge,
-    "PChargeAllMax": CalculateAllMaxPCharge,
-    # negative
-    "NChargeOMax": CalculateOMaxNCharge,
-    "NChargeNMax": CalculateNMaxNCharge,
-    "NChargeCMax": CalculateCMaxNCharge,
-    "NChargeHMax": CalculateHMaxNCharge,
-    # positive
-    "PChargeOMax": CalculateOMaxPCharge,
-    "PChargeNMax": CalculateNMaxPCharge,
-    "PChargeCMax": CalculateCMaxPCharge,
-    "PChargeHMax": CalculateHMaxPCharge,
-}
+
+_Charge={'SubmolPolarityPara':CalculateSubmolPolarityPara,
+         'LocalDipoleIndex':CalculateLocalDipoleIndex,
+
+        'NChargeRelative':CalculateRelativeNCharge,
+        'PChargeRelative':CalculateRelativePCharge,
+         
+         
+        'ChargeMeanAbsoulte':CalculateMeanAbsoulteCharge,
+        'ChargeTotalAbsoulte':CalculateTotalAbsoulteCharge,
+         
+         
+        'NChargeMean':CalculateMeanNCharge,
+        'NChargeTotal':CalculateTotalNCharge,
+         
+         
+        'PChargeMean':CalculateMeanPCharge,
+        'PChargeTotal':CalculateTotalPCharge,
+         
+         ## sum square
+        'SumSquareChargeAll':CalculateAllSumSquareCharge,
+        'SumSquareChargeO':CalculateOSumSquareCharge,
+        'SumSquareChargeN':CalculateNSumSquareCharge,
+        'SumSquareChargeC':CalculateCSumSquareCharge,
+        'SumSquareChargeH':CalculateHSumSquareCharge,
+         
+         #all 
+        'NChargeAllMax':CalculateAllMaxNCharge,
+        'PChargeAllMax':CalculateAllMaxPCharge,
+         
+         #negative
+        'NChargeOMax':CalculateOMaxNCharge,
+        'NChargeNMax':CalculateNMaxNCharge,
+        'NChargeCMax':CalculateCMaxNCharge,
+        'NChargeHMax':CalculateHMaxNCharge,
+         
+         #positive
+        'PChargeOMax':CalculateOMaxPCharge,
+        'PChargeNMax':CalculateNMaxPCharge,
+        'PChargeCMax':CalculateCMaxPCharge,
+        'PChargeHMax':CalculateHMaxPCharge,
+    }
 
 
 from collections import OrderedDict
-
-
 def GetCharge(mol):
     """
     #################################################################
@@ -737,27 +732,28 @@ def GetCharge(mol):
         Output: result is a dict form containing all charge descriptors.
     #################################################################
     """
-    result = OrderedDict()
+    result=OrderedDict()
     for DesLabel in _Charge.keys():
         res = _Charge[DesLabel](mol)
         if abs(res) == numpy.inf:
             res = numpy.nan
-        result[DesLabel] = res
+        result[DesLabel]=res
     return result
 
 
 _ChargeNames = list(_Charge.keys())
 ##############################################################################
 
-if __name__ == "__main__":
-
+if __name__ =='__main__':
+    
     import pandas as pd
     from tqdm import tqdm
-
-    smis = ["C" * (i + 1) for i in range(100)]
+    
+    smis = ['C'*(i+1) for i in range(100)]
     x = []
     for index, smi in tqdm(enumerate(smis), ascii=True):
         m = Chem.MolFromSmiles(smi)
         x.append(GetCharge(m))
-
+        
     pd.DataFrame(x)
+

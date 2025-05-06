@@ -50,32 +50,12 @@ import re
 import pandas as pd
 
 
-AALetter = [
-    "A",
-    "R",
-    "N",
-    "D",
-    "C",
-    "E",
-    "Q",
-    "G",
-    "H",
-    "I",
-    "L",
-    "K",
-    "M",
-    "F",
-    "P",
-    "S",
-    "T",
-    "W",
-    "Y",
-    "V",
-]
+
+AALetter=["A","R","N","D","C","E","Q","G","H","I","L","K","M","F","P","S","T","W","Y","V"]
 #############################################################################################
 def CalculateAAComposition(ProteinSequence):
 
-    """
+	"""
 	########################################################################
 	Calculate the composition of Amino acids 
 	
@@ -92,16 +72,15 @@ def CalculateAAComposition(ProteinSequence):
 	20 amino acids.
 	########################################################################
 	"""
-    LengthSequence = len(ProteinSequence)
-    Result = {}
-    for i in AALetter:
-        Result[i] = round(float(ProteinSequence.count(i)) / LengthSequence * 100, 3)
-    return Result
-
+	LengthSequence=len(ProteinSequence)
+	Result={}
+	for i in AALetter:
+		Result[i]=round(float(ProteinSequence.count(i))/LengthSequence*100,3)
+	return Result
 
 #############################################################################################
 def CalculateDipeptideComposition(ProteinSequence):
-    """
+	"""
 	########################################################################
 	Calculate the composition of dipeptidefor a given protein sequence.
 	
@@ -117,22 +96,20 @@ def CalculateDipeptideComposition(ProteinSequence):
 	########################################################################
 	"""
 
-    LengthSequence = len(ProteinSequence)
-    Result = {}
-    for i in AALetter:
-        for j in AALetter:
-            Dipeptide = i + j
-            Result[Dipeptide] = round(
-                float(ProteinSequence.count(Dipeptide)) / (LengthSequence - 1) * 100, 2
-            )
-    return Result
+	LengthSequence=len(ProteinSequence)
+	Result={}
+	for i in AALetter:
+		for j in AALetter:
+			Dipeptide=i+j
+			Result[Dipeptide]=round(float(ProteinSequence.count(Dipeptide))/(LengthSequence-1)*100,2)
+	return Result
+
 
 
 #############################################################################################
 
-
 def Getkmers():
-    """
+	"""
 	########################################################################
 	Get the amino acid list of 3-mers. 
 	
@@ -144,17 +121,16 @@ def Getkmers():
 	
 	########################################################################
 	"""
-    kmers = list()
-    for i in AALetter:
-        for j in AALetter:
-            for k in AALetter:
-                kmers.append(i + j + k)
-    return kmers
-
+	kmers=list()
+	for i in AALetter:
+		for j in AALetter:
+			for k in AALetter:
+				kmers.append(i+j+k)
+	return kmers
 
 #############################################################################################
 def GetSpectrumDict(proteinsequence):
-    """
+	"""
 	########################################################################
 	Calcualte the spectrum descriptors of 3-mers for a given protein.
 	
@@ -169,24 +145,24 @@ def GetSpectrumDict(proteinsequence):
 	3-mers.
 	########################################################################
 	"""
-    result = {}
-    kmers = Getkmers()
-    for i in kmers:
-        result[i] = len(re.findall(i, proteinsequence))
-    return result
+	result={}
+	kmers=Getkmers()
+	for i in kmers:
+		result[i]=len(re.findall(i,proteinsequence))
+	return result
+
 
 
 #############################################################################################
 def _replace(x):
-    # x = 'ACA'
-    x = list(x)
-    x[1] = "*"
-    x = "".join(x)
-    return x
-
+	#x = 'ACA'
+	x = list(x)
+	x[1] = '*'
+	x = ''.join(x)
+	return x
 
 def Calculate2AACon3AA(proteinsequence):
-    """
+	"""
 	########################################################################
 	Calcualte the composition descriptors of 3-mers for a given protein, note that the middle aa in the 3-mer is ignored
 	
@@ -199,21 +175,17 @@ def Calculate2AACon3AA(proteinsequence):
 	Output: result is a dict form containing the composition values of 400 3-mers (ignore middle).
 	########################################################################
 	"""
-    res = GetSpectrumDict(proteinsequence)
-    s1 = pd.Series(res)
-    s1.index = s1.index.map(_replace)
-    res = (
-        (s1.reset_index().groupby("index")[0].sum() / len(proteinsequence) * 100)
-        .round(3)
-        .to_dict()
-    )
-    return res
+	res = GetSpectrumDict(proteinsequence)
+	s1 = pd.Series(res)
+	s1.index = s1.index.map(_replace)
+	res = (s1.reset_index().groupby('index')[0].sum()/len(proteinsequence)*100).round(3).to_dict()
+	return res
 
 
 #############################################################################################
 def CalculateAADipeptideComposition(ProteinSequence):
 
-    """
+	"""
 	########################################################################
 	Calculate the composition of AADs, dipeptide and 3-mers for a 
 	
@@ -231,19 +203,17 @@ def CalculateAADipeptideComposition(ProteinSequence):
 	########################################################################
 	"""
 
-    result = {}
-    result.update(CalculateAAComposition(ProteinSequence))
-    result.update(CalculateDipeptideComposition(ProteinSequence))
-    result.update(GetSpectrumDict(ProteinSequence))
+	result={}
+	result.update(CalculateAAComposition(ProteinSequence))
+	result.update(CalculateDipeptideComposition(ProteinSequence))
+	result.update(GetSpectrumDict(ProteinSequence))
 
-    return result
-
-
+	return result
 #############################################################################################
-if __name__ == "__main__":
+if __name__=="__main__":
 
-    protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
-    AAC = CalculateAAComposition(protein)
-    DAAC = CalculateDipeptideComposition(protein)
-    spectrum = GetSpectrumDict(protein)
-    TAAC = Calculate2AACon3AA(protein)
+	protein="ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
+	AAC=CalculateAAComposition(protein)
+	DAAC=CalculateDipeptideComposition(protein)
+	spectrum=GetSpectrumDict(protein)
+	TAAC=Calculate2AACon3AA(protein)

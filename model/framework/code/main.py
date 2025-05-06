@@ -11,7 +11,7 @@ output_file = sys.argv[2]
 
 
 root = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(root, "/bidd-molmap/"))
+#sys.path.append(os.path.join(root, "/bidd-molmap/"))
 
 
 mp = fingerprints_molmap()
@@ -49,4 +49,4 @@ with open(output_file, "w") as f:
     writer = csv.writer(f)
     writer.writerow(header)  # header
     for o in outputs:
-        writer.writerow(o)
+        writer.writerow([int(o_) for o_ in o])
