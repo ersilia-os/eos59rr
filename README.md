@@ -49,7 +49,7 @@ _10 of 1332 columns are shown_
 
 ### Resource Consumption
 - **Model Size (Mb):** `413`
-- **Environment Size (Mb):** `1069`
+- **Environment Size (Mb):** `1083`
 
 
 ### References
@@ -57,7 +57,7 @@ _10 of 1332 columns are shown_
 - **Publication**: [https://www.nature.com/articles/s42256-021-00301-6](https://www.nature.com/articles/s42256-021-00301-6)
 - **Publication Type:** `Peer reviewed`
 - **Publication Year:** `2021`
-- **Ersilia Contributor:** [samuelmaina](https://github.com/samuelmaina)
+- **Ersilia Contributor:** [Abellegese](https://github.com/Abellegese)
 
 ### License
 This package is licensed under a [GPL-3.0](https://github.com/ersilia-os/ersilia/blob/master/LICENSE) license. The model contained within this package is licensed under a [GPL-3.0-or-later](LICENSE) license.
