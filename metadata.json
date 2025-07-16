@@ -16,8 +16,7 @@
     ],
     "Input Dimension": 1,
     "Output": [
-        "Image",
-        "Descriptor"
+        "Value"
     ],
     "Output Dimension": 1332,
     "Output Consistency": "Fixed",
