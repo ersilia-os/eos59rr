@@ -37,15 +37,17 @@
     "License": "GPL-3.0-or-later",
     "Contributor": "samuelmaina",
     "Incorporation Date": "2023-07-03",
+    "Last Packaging Date": "2025-10-17",
+    "Release": "v1.0.0",
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos59rr.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos59rr",
     "Docker Architecture": "AMD64",
     "Model Size": 413.0,
     "Environment Size": 1089.0,
-    "Image Size": 1558.09,
-    "Computational Performance 1": 60.71,
-    "Computational Performance 2": 58.38,
-    "Computational Performance 3": 69.94,
-    "Computational Performance 4": 555.82,
-    "Computational Performance 5": 1674.6
+    "Image Size": 1565.24,
+    "Computational Performance 1": 37.56,
+    "Computational Performance 2": 30.0,
+    "Computational Performance 3": 34.25,
+    "Computational Performance 4": 191.86,
+    "Computational Performance 5": 1062.27
 }
