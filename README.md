@@ -4,6 +4,7 @@ Molecular representation of small molecules via ingerprint-based molecular maps 
 
 This model was incorporated on 2023-07-03.
 
+
 ## Information
 ### Identifiers
 - **Ersilia Identifier:** `eos59rr`
@@ -13,7 +14,7 @@ This model was incorporated on 2023-07-03.
 - **Task:** `Representation`
 - **Subtask:** `Featurization`
 - **Biomedical Area:** `Any`
-- **Target Organism:** `Not Applicable`
+- **Target Organism:** `Any`
 - **Tags:** `Fingerprint`
 
 ### Input
@@ -62,7 +63,7 @@ _10 of 1332 columns are shown_
 - **Publication**: [https://www.nature.com/articles/s42256-021-00301-6](https://www.nature.com/articles/s42256-021-00301-6)
 - **Publication Type:** `Peer reviewed`
 - **Publication Year:** `2021`
-- **Ersilia Contributor:** [Abellegese](https://github.com/Abellegese)
+- **Ersilia Contributor:** [samuelmaina](https://github.com/samuelmaina)
 
 ### License
 This package is licensed under a [GPL-3.0](https://github.com/ersilia-os/ersilia/blob/master/LICENSE) license. The model contained within this package is licensed under a [GPL-3.0-or-later](LICENSE) license.
