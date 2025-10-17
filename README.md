@@ -2,8 +2,7 @@
 
 Molecular representation of small molecules via ingerprint-based molecular maps (images). Typically, the goal is to use these images as inputs for an image-based deep learning model such as a convolutional neural network. The authors have demonstrated high performance of MolMap out-of-the-box with a broad range of tasks from MoleculeNet.
 
-This model was incorporated on 2023-07-03.
-
+This model was incorporated on 2023-07-03.Last packaged on 2025-10-17.
 
 ## Information
 ### Identifiers
@@ -51,12 +50,12 @@ _10 of 1332 columns are shown_
 ### Resource Consumption
 - **Model Size (Mb):** `413`
 - **Environment Size (Mb):** `1089`
-- **Image Size (Mb):** `1558.09`
+- **Image Size (Mb):** `1565.24`
 
 **Computational Performance (seconds):**
-- 10 inputs: `60.71`
-- 100 inputs: `69.94`
-- 10000 inputs: `1674.6`
+- 10 inputs: `37.56`
+- 100 inputs: `34.25`
+- 10000 inputs: `1062.27`
 
 ### References
 - **Source Code**: [https://github.com/shenwanxiang/bidd-molmap](https://github.com/shenwanxiang/bidd-molmap)
