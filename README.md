@@ -59,7 +59,7 @@ _10 of 1332 columns are shown_
 
 ### References
 - **Source Code**: [https://github.com/shenwanxiang/bidd-molmap](https://github.com/shenwanxiang/bidd-molmap)
-- **Publication**: [https://www.nature.com/articles/s42256-021-00301-6](https://www.nature.com/articles/s42256-021-00301-6)
+- **Publication**: [https://doi.org/10.1038/s42256-021-00301-6](https://doi.org/10.1038/s42256-021-00301-6)
 - **Publication Type:** `Peer reviewed`
 - **Publication Year:** `2021`
 - **Ersilia Contributor:** [samuelmaina](https://github.com/samuelmaina)
