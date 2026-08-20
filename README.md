@@ -1,6 +1,6 @@
 # Molecular fingerprint maps based on broadly learned knowledge-based representations
 
-Arranges 1,332 fingerprint features into a two-dimensional image so that a molecule can be handed to a convolutional network built for pictures. Shen and colleagues derived the layout by embedding features according to how they co-occur across 8.5 million molecules, so related bits sit near one another rather than in arbitrary positions. Presenting knowledge-based descriptors this way let standard image architectures match or exceed graph-based models on pharmaceutical benchmarks.
+Molecular representation of small molecules via ingerprint-based molecular maps (images). Typically, the goal is to use these images as inputs for an image-based deep learning model such as a convolutional neural network. The authors have demonstrated high performance of MolMap out-of-the-box with a broad range of tasks from MoleculeNet.
 
 This model was incorporated on 2023-07-03.Last packaged on 2025-10-17.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2023-07-03.Last packaged on 2025-10-17.
 ### Output
 - **Output Dimension:** `1332`
 - **Output Consistency:** `Fixed`
-- **Interpretation:** Fingerprint-based molecular map arranged as a 37 by 36 image for convolutional models.
+- **Interpretation:** Image representation of a molecule. Each pixel represents a molecular feature (37 rows, 36 columns, flattened with reshape)
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
