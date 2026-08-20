@@ -1,6 +1,6 @@
 # Molecular fingerprint maps based on broadly learned knowledge-based representations
 
-Molecular representation of small molecules via ingerprint-based molecular maps (images). Typically, the goal is to use these images as inputs for an image-based deep learning model such as a convolutional neural network. The authors have demonstrated high performance of MolMap out-of-the-box with a broad range of tasks from MoleculeNet.
+Arranges 1,332 fingerprint features into a two-dimensional image so that a molecule can be handed to a convolutional network built for pictures. Shen and colleagues derived the layout by embedding features according to how they co-occur across 8.5 million molecules, so related bits sit near one another rather than in arbitrary positions. Presenting knowledge-based descriptors this way let standard image architectures match or exceed graph-based models on pharmaceutical benchmarks.
 
 This model was incorporated on 2023-07-03.Last packaged on 2025-10-17.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2023-07-03.Last packaged on 2025-10-17.
 ### Output
 - **Output Dimension:** `1332`
 - **Output Consistency:** `Fixed`
-- **Interpretation:** Image representation of a molecule. Each pixel represents a molecular feature (37 rows, 36 columns, flattened with reshape)
+- **Interpretation:** Fingerprint-based molecular map arranged as a 37 by 36 image for convolutional models.
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
@@ -65,7 +65,7 @@ _10 of 1332 columns are shown_
 - **Ersilia Contributor:** [samuelmaina](https://github.com/samuelmaina)
 
 ### License
-This package is licensed under a [GPL-3.0](https://github.com/ersilia-os/ersilia/blob/master/LICENSE) license. The model contained within this package is licensed under a [GPL-3.0-or-later](LICENSE) license.
+This package is licensed under a [GPL-3.0](https://github.com/ersilia-os/ersilia/blob/master/LICENSE) license. The model contained within this package is licensed under a [MIT](LICENSE) license.
 
 **Notice**: Ersilia grants access to models _as is_, directly from the original authors, please refer to the original code repository and/or publication if you use the model in your research.
 
