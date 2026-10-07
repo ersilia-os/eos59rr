@@ -1,6 +1,6 @@
 # Molecular fingerprint maps based on broadly learned knowledge-based representations
 
-Arranges 1,332 fingerprint features into a two-dimensional image so that a molecule can be handed to a convolutional network built for pictures. Shen and colleagues derived the layout by embedding features according to how they co-occur across 8.5 million molecules, so related bits sit near one another rather than in arbitrary positions. Presenting knowledge-based descriptors this way let standard image architectures match or exceed graph-based models on pharmaceutical benchmarks.
+Turns a molecule into a 37 by 36 feature map on which MACCS, pharmacophore ErG and PubChem fingerprint bits are positioned by how they correlate across 8.5 million PubChem molecules, so related bits land next to one another and a convolutional network can read the result as a picture. Shen and colleagues showed that image architectures fed these maps matched or beat graph-based models on most of 26 pharmaceutical benchmarks. Ersilia collapses the three fingerprint channels by summing them, so each returned value is a channel sum.
 
 This model was incorporated on 2023-07-03.Last packaged on 2025-10-17.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2023-07-03.Last packaged on 2025-10-17.
 ### Output
 - **Output Dimension:** `1332`
 - **Output Consistency:** `Fixed`
-- **Interpretation:** Fingerprint-based molecular map arranged as a 37 by 36 image for convolutional models.
+- **Interpretation:** 1,332 values of a 37 by 36 fingerprint map, with correlated fingerprint bits placed side by side.
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
