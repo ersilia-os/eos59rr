@@ -4,6 +4,7 @@ import csv
 import sys
 import numpy as np
 from scripts.utils import fingerprints_molmap
+from molmap.feature.fingerprint import Extraction, mapkey
 
 # parse arguments
 input_file = sys.argv[1]
@@ -15,14 +16,34 @@ root = os.path.dirname(os.path.abspath(__file__))
 
 
 mp = fingerprints_molmap()
+# The map only keeps MACCS, ErG and PubChem bits, but the default extractor computes all
+# 12 fingerprint types, in order. MAP4 (last) crashes on molecules without atom pairs, such
+# as a single ion like [Y+3], and fails the whole batch. Drop MHFP6 and MAP4, which run
+# after PubChem and are not used. Keep the types before PubChem: they change the RDKit mol
+# in place and so affect the MACCS/ErG/PubChem bits; dropping them would change outputs.
+mp.extract = Extraction(feature_dict={k: {} for k in mapkey if k not in ("MHFP6", "MAP4")})
+
+
+def _to_vector(fmap):
+    fmap = np.sum(fmap, axis=-1)
+    return fmap.reshape(-1)
 
 
 # my model
 def my_model(smiles_list):
-    X = mp.batch_transform(smiles_list)
-    X = np.sum(X, axis=3)
-    X = X.reshape(X.shape[0], X.shape[1]*X.shape[2])
-    return X
+    try:
+        X = mp.batch_transform(smiles_list)
+        return [_to_vector(x) for x in X]
+    except Exception:
+        # One bad input (e.g. an invalid SMILES) makes the whole batch fail, so retry
+        # one molecule at a time and return an empty row only for the inputs that fail.
+        outputs = []
+        for smi in smiles_list:
+            try:
+                outputs += [_to_vector(mp.transform(smi))]
+            except Exception:
+                outputs += [None]
+        return outputs
 
 
 # read SMILES from .csv file, assuming one column with header
@@ -49,4 +70,7 @@ with open(output_file, "w") as f:
     writer = csv.writer(f)
     writer.writerow(header)  # header
     for o in outputs:
-        writer.writerow([int(o_) for o_ in o])
+        if o is None:
+            writer.writerow([""] * len(header))
+        else:
+            writer.writerow([int(o_) for o_ in o])
