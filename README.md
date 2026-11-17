@@ -3,7 +3,7 @@
 Turns a molecule into a 37 by 36 feature map on which MACCS, pharmacophore ErG and PubChem fingerprint bits are positioned by how they correlate across 8.5 million PubChem molecules, so related bits land next to one another and a convolutional network can read the result as a picture. Shen and colleagues showed that image architectures fed these maps matched or beat graph-based models on most of 26 pharmaceutical benchmarks. Ersilia collapses the three fingerprint channels by summing them, so each returned value is a channel sum.
 
 This model was incorporated on 2023-07-03.
-Last packaged on 2025-10-17.
+Last packaged on 2026-11-17.
 
 ## Information
 ### Identifiers
@@ -51,12 +51,12 @@ _10 of 1332 columns are shown_
 ### Resource Consumption
 - **Model Size (Mb):** `385`
 - **Environment Size (Mb):** `1087`
-- **Image Size (Mb):** `1565.24`
+- **Image Size (Mb):** `750.4`
 
 **Computational Performance (seconds):**
-- 10 inputs: `37.56`
-- 100 inputs: `34.25`
-- 10000 inputs: `1062.27`
+- 10 inputs: `34.33`
+- 100 inputs: `27.68`
+- 10000 inputs: `739.88`
 
 ### References
 - **Source Code**: [https://github.com/shenwanxiang/bidd-molmap](https://github.com/shenwanxiang/bidd-molmap)
